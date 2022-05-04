@@ -13,6 +13,7 @@ MACHINES = {
               # forwarded ports
               :forwarded_port => []
             }
+
 }
 
 Vagrant.configure("2") do |config|
@@ -22,8 +23,9 @@ Vagrant.configure("2") do |config|
     # Apply VM config
     config.vm.define boxname do |box|
       # Set VM base box and hostname
-      box.vm.box = boxconfig[:box_name]
-      box.vm.host_name = boxname.to_s
+      box.vm.box = "ikordyukov/centos-7-5"
+      box.vm.host_name = "centos-7-5"
+      box.vm.box_version = "1.0"
       # Additional network config if present
       if boxconfig.key?(:net)
         boxconfig[:net].each do |ipconf|
